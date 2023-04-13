@@ -1,0 +1,38 @@
+--creating store database
+
+CREATE TABLE eyeshadow_pans(id integer primary key, color text, finish text, size text, price integer);
+
+INSERT INTO eyeshadow_pans VALUES (1, "pink", "shimmer", "small", 4.99);
+INSERT INTO eyeshadow_pans VALUES (2, "beige", "matte", "large", 13.99);
+INSERT INTO eyeshadow_pans VALUES (3, "purple", "shimmer", "small", 4.99);
+INSERT INTO eyeshadow_pans VALUES (4, "brown", "matte", "large", 13.99);
+INSERT INTO eyeshadow_pans VALUES (5, "green", "shimmer", "large", 15.99);
+INSERT INTO eyeshadow_pans VALUES (6, "black", "matte", "small", 2.99);
+
+--selecting the eyeshadows and ordering them based in size
+SELECT * FROM eyeshadow_pans
+ORDER BY size desc;
+
+CREATE TABLE Face_wash (id integer primary key, consistency text, skintype text, specialty text, price integer);
+
+INSERT INTO Face_wash VALUES (1, "foaming", "combo", "acne", 19.99);
+INSERT INTO Face_wash VALUES (2, "gel", "normal to dry", "hydrating", 19.99);
+INSERT INTO Face_wash VALUES (3, "foaming", "combo", "anti aging", 24.99);
+INSERT INTO Face_wash VALUES (4, "gel", "normal to dry", "anti aging", 24.99);
+
+--selecting the face washes and ordering them by price to see which factors cause a higher price point.
+SELECT * FROM Face_wash
+ORDER BY price;
+
+CREATE TABLE eyecreams (id integer primary key, specialty text, consistency text, vegan text, price integer);
+
+INSERT INTO eyecreams VALUES (1, "depuffing", "gel", "yes", 29.99);
+INSERT INTO eyecreams VALUES (2, "fine lines", "cream", "yes", 35.99);
+INSERT INTO eyecreams VALUES (3, "dark circles", "cream", "no", 14.99);
+INSERT INTO eyecreams VALUES (4, "anti aging", "cream", "yes", 49.99);
+INSERT INTO eyecreams VALUES (5, "hydrating", "cream", "no", 14.99);
+
+--ordering the eyecreams by price and displaying what eye cream you can purchase for under $20.
+SELECT * FROM eyecreams ORDER BY price;
+
+SELECT specialty, price FROM eyecreams WHERE price < 20.00;
