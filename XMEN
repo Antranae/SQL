@@ -1,0 +1,29 @@
+
+CREATE TABLE XMEN (id integer primary key, origin text, name TEXT, abilities TEXT, mutant_class integer);
+
+INSERT INTO XMEN VALUES (1, "XMEN #1 1963", "Professor X or Charles Xavier", "Alpha Level Telepathy", 4);
+INSERT INTO XMEN VALUES (2, "XMEN #1 1963", "Phoenix or Jean Grey", "Omega level Telepathy", 5);
+INSERT INTO XMEN VALUES (3, "XMEN #1 1963", "Magneto", "Omega level Magnetokinesis", 4);
+INSERT INTO XMEN VALUES (4, "XMEN #4 1964", "Scarlet Witch", "Witchcraft and Chaos Magic", 5);
+INSERT INTO XMEN VALUES (5, "Ms. Marvel #16 1978", "Mystique", "Metamorphic abilities", 4);
+INSERT INTO XMEN VALUES (6, "XMEN #4 1964", "Quicksilver", "Super Speed", 4);
+INSERT INTO XMEN VALUES (7, "Incredible Hulk #81 1974", "Wolverine", "Regeneration and retractable forearm claws", 3);
+INSERT INTO XMEN VALUES (8, "Avengers #10 1981", "Rogue", "absorbs life force on contact", 4);
+
+CREATE TABLE XMEN_Status (name_ID INTEGER PRIMARY KEY, gender text, alive text, align text);
+
+INSERT INTO XMEN_Status VALUES (1, "male","deceased","good");
+INSERT INTO XMEN_Status VALUES (2, "female", "deceased", "good");
+INSERT INTO XMEN_Status VALUES (3, "male", "alive", "bad");
+INSERT INTO XMEN_Status VALUES (4, "female", "alive", "good");
+INSERT INTO XMEN_Status VALUES (5, "female", "deceased", "bad");
+INSERT INTO XMEN_Status VALUES (6, "male", "alive", "good");
+INSERT INTO XMEN_Status VALUES (7, "male", "deceased", "good");
+INSERT INTO XMEN_Status VALUES (8, "female", "alive", "good");
+
+-- This join shows the mutants, their classes, and affiliation revealing that there are more higher class mutants on the good side
+SELECT x.name, x.mutant_class, xs.align
+FROM XMEN as x
+JOIN xmen_status as xs
+ON x.id = xs.name_id
+ORDER BY mutant_class DESC;
